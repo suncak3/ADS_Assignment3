@@ -44,7 +44,7 @@ public class MyHashTable<K, V> {
      * @return index in the chainArray.
      */
     private int hash(K key) {
-         return Math.abs(key.hashCode()%M);
+         return Math.abs(key.hashCode() % M);
     }
 
     /**
@@ -162,5 +162,17 @@ public class MyHashTable<K, V> {
             }
         }
         return null;
+    }
+
+    public void printSizeOfBuckets(){
+        for (int i = 0; i < chainArray.length; i++) {
+            int count = 0;
+            HashNode<K, V> h = chainArray[i];
+            while(h != null){
+                count += 1;
+                h = h.next;
+            }
+            System.out.println("Bucket " + i + ": " + count);
+        }
     }
 }
